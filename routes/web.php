@@ -35,3 +35,15 @@ Route::get('admin/profile/edit','Admin\ProfileController@edit');
     Route:get('profile/edit','Admin\ProfileController@edit');
 });
 */
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('news/create', 'Admin\NewsController@add')->middleware('auth');
+    Route::get('profile/create', 'Admin\NewsController@add')->middleware('auth');
+    Route::get('profile/edit', 'Admin\NewsController@add')->middleware('auth');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
