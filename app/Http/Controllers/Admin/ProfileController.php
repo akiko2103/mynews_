@@ -13,10 +13,14 @@ class ProfileController extends Controller
         return view('admin.profile.create');
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $form = $request->all();
+        dd($form);
         return redirect('admin/profile/create');
     }
+    
+    
 
     public function edit()
     {
@@ -26,5 +30,10 @@ class ProfileController extends Controller
     public function update()
     {
         return redirect('admin/profile/edit');
+    }
+    
+    public function piyo()
+    {
+        dd('piyo');
     }
 }
