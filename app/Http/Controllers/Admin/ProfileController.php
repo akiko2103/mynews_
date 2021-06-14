@@ -5,20 +5,32 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Profile;
+
 class ProfileController extends Controller
 {
     //
-        public function add()
+    public function add()
     {
         return view('admin.profile.create');
     }
 
     public function create(Request $request)
     {
+        // $form = $request->all();
+        // // dd($form);
+        // return redirect('admin/profile/create');
+        
+        $this->validate($request, Profile::$rules);
+        $profile = new Profile;
         $form = $request->all();
-        dd($form);
-        return redirect('admin/profile/create');
+        
+        unset($form['_token']);
+        
+        $profile->fill($form);
+        $profile->save();
     }
+    
     
     
 
@@ -32,8 +44,8 @@ class ProfileController extends Controller
         return redirect('admin/profile/edit');
     }
     
-    public function piyo()
-    {
-        dd('piyo');
-    }
+//     public function piyo()
+//     {
+//         dd('piyo');
+//     }
 }
