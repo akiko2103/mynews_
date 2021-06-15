@@ -31,7 +31,7 @@
                     <div class="form-group row">
                         <label class="col-md-2">性別</label>
                         <div class="col-md-3">
-                            <select class="form-control" name="gendar">
+                            <select class="form-control" name="gender">
                                 <option value="1">男性</option>
                                 <option value="2">女性</option>
                                 <option value="3">そのほか</option>
