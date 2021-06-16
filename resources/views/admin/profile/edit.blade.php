@@ -15,34 +15,34 @@
                         </ul>
                     @endif
                      <div class="form-group row">
-                        <label class="col-md-2">氏名</label>
+                        <label class="col-md-2" for="name">氏名</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                            <input type="text" class="form-control" name="name" value="{{ $profile_form->name}}">
+                           
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2">性別</label>
+                        <label class="col-md-2" for="gender">性別</label>
                         <div class="col-md-3">
                             <select class="form-control" name="gender">
-                                <option value="1">男性</option>
-                                <option value="2">女性</option>
-                                <option value="3">そのほか</option>
+                                <option value="1" {{ $profile_form->gender == 1 ? "selected" : ""}}>男性</option>
+                                <option value="2" {{ $profile_form->gender == 2 ? "selected" : ""}}>女性</option>
+                                <option value="3" {{ $profile_form->gender == 3 ? "selected" : ""}}>そのほか</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2">趣味</label>
+                        <label class="col-md-2" for="hobby">趣味</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="hobby" rows="5">{{ old('hobby') }}</textarea>
+                            <textarea class="form-control" name="hobby" rows="5">{{ $profile_form->hobby}}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2">自己紹介</label>
+                        <label class="col-md-2" for="introduction">自己紹介</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="introduction" rows="5">{{ old('introduction') }}</textarea>
+                            <textarea class="form-control" name="introduction" rows="5">{{ $profile_form->introduction}}</textarea>
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="hidden" name="id" value="{{ $profile_form->id }}">
@@ -51,6 +51,18 @@
                         </div>
                     </div>
                 </form>
+                <div class="row mt-5">
+                    <div class="col-md-4 mx-auto">
+                        <h2>編集履歴</h2>
+                        <ul class="list-group">
+                            @if ($profile_form->profilehistories != NULL)
+                                @foreach ($profile_form->profilehistories as $profilehistory)
+                                    <li class="list-group-item">{{ $profilehistory->edited_at }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

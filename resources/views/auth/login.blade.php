@@ -9,26 +9,13 @@
 
                     <div class="login-body card-body">
                         <form method="POST" action="{{ route('login') }}">
-                            <!--route関数は、URLを生成したりリダイレクトしたりするための関数です。-->
-                            <!--今回であれば、”/login”というURLを生成しています。-->
                             @csrf
-                            <!--▼CSRFトークンについて-->
-                            <!--次に@csrfは何をしているかを見てみます。-->
-                            <!--これは、認証済みのユーザーがリクエストを送信しているのかを確認するために利用します。-->
-                            <!--アプリケーションでHTMLフォームを定義する場合は常に、CSRF保護ミドルウェアがリクエストを検証できるように、-->
-                            <!--隠しCSRFトークンフィールドをそのフォームへ含める必要があります。このトークンを生成するのが@csrf になります。-->
 
                             <div class="form-group row">
                                 <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('messages.E-Mail Address') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-                                    <!--▼三項演算子について-->
-                                    <!--{{ $errors->has('email') ? ' is-invalid' : '' }}が三項演算子-->
-                                    <!--<条件式> ? <真式> : <偽式>-->
-                                    <!--▼$errors->has('email')とは-->
-                                    <!--エラーメッセージが格納されている変数 -> emailフィールド（のこと）で発生したエラー内容-->
-                                    <!--emailでエラーが起きているとその内容を取得することができる、の意-->
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback">
